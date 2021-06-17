@@ -1,9 +1,12 @@
-FROM python:3.7-slim
+FROM balenalib/jetson-nano-python:3-build
 
 # install dependencies
 RUN  apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y wget unzip xvfb libxtst6 libxrender1 python3.7-dev build-essential net-tools x11-utils socat
+
+RUN apt-get install -y openjdk-8-jdk gradle openjdk-8-jdk libx11-dev xorg-dev
+
 
 # set environment variables
 ENV TWS_INSTALL_LOG=/root/Jts/tws_install.log \
